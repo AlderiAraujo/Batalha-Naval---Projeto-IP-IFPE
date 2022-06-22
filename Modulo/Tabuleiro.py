@@ -12,18 +12,38 @@ indice_alfa2 = []
 indice_num2 = []
 
 tela = pygame.display.set_mode((1060,480))
-img_oceano = pygame.image.load("C:/Users/Alderi/Documents/GitHub/Batalha-Naval---Projeto-IP-IFPE/Modulo/oceano.jpg")
+img_oceano = pygame.image.load("./Repositorio-Imagens/oceano.jpg")
 img_oceanoTabuleiro = pygame.transform.scale(img_oceano, (48,48))
-img = pygame.image.load("C:/Users/Alderi/Documents/GitHub/Batalha-Naval---Projeto-IP-IFPE/Modulo/branco.jpg")
-img_Tabuleiro = pygame.transform.scale(img, (48,48))
+imgA = pygame.image.load("./Repositorio-Imagens/A.jpg")
+imgATabuleiro = pygame.transform.scale(imgA, (48,48))
+imgB = pygame.image.load("./Repositorio-Imagens/B.jpg")
+imgBTabuleiro = pygame.transform.scale(imgB, (48,48))
+imgC = pygame.image.load("./Repositorio-Imagens/C.jpg")
+imgCTabuleiro = pygame.transform.scale(imgC, (48,48))
+imgD = pygame.image.load("./Repositorio-Imagens/D.jpg")
+imgDTabuleiro = pygame.transform.scale(imgD, (48,48))
+imgE = pygame.image.load("./Repositorio-Imagens/E.jpg")
+imgETabuleiro = pygame.transform.scale(imgE, (48,48))
+imgF = pygame.image.load("./Repositorio-Imagens/F.jpg")
+imgFTabuleiro = pygame.transform.scale(imgF, (48,48))
+imgG = pygame.image.load("./Repositorio-Imagens/G.jpg")
+imgGTabuleiro = pygame.transform.scale(imgG, (48,48))
+imgH = pygame.image.load("./Repositorio-Imagens/H.jpg")
+imgHTabuleiro = pygame.transform.scale(imgH, (48,48))
+img = pygame.image.load("./Repositorio-Imagens/H.jpg")
+img_Tabuleiro = pygame.transform.scale(imgH, (48,48))
 
-#loop para criação da matriz
+
+
+
+
 for l in range(0, linha):
-    indice_alfa1.append(img_Tabuleiro)
+    indice_alfa1.append(imgATabuleiro)
 
 for l in range(0, linha):
     indice_num1.append(img_Tabuleiro)
 
+#loop para criação da matriz
 for l in range(0, linha):
     listaLinha = []
     for c in range(0, coluna):
