@@ -1,7 +1,7 @@
 import pygame
 #varáveis com as proporções que irão compor a tela do jogo
-largura = 1080
-altura = 480
+largura = 1130
+altura = 530
 
 try: #iniciando o pygame
     pygame.init()
