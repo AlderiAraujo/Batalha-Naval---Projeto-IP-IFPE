@@ -18,6 +18,9 @@ img = pygame.image.load("C:/Users/Alderi/Documents/GitHub/Batalha-Naval---Projet
 img_Tabuleiro = pygame.transform.scale(img, (48,48))
 
 #loop para criação da matriz
+for i in range(9):
+    indice_alfa.append(img_Tabuleiro)
+
 for l in range(0, linha):
     indice_alfa1.append(img_Tabuleiro)
 
@@ -27,7 +30,8 @@ for l in range(0, linha):
 for l in range(0, linha):
     listaLinha = []
     for c in range(0, coluna):
-        listaLinha.append(img_oceanoTabuleiro)
+        if tabuleiro1[0]:
+            tabuleiro1[0] = indice_alfa
     tabuleiro1.append(listaLinha)
 
 for l in range(0, linha):
