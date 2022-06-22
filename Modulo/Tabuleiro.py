@@ -4,6 +4,8 @@ tabuleiro = []
 linha = 8
 coluna = 8
 AZUL = (0, 0, 255)
+#img_oceano = pygame.image.load('./Batalha-Naval---Projeto-IP-IFPE/Modulo/oceano.jpg')
+
 #loop para criação da matriz
 for l in range(0, linha):
     listaLinha = []
@@ -17,3 +19,4 @@ IDLinhaInicial = 1
 for pos,item in enumerate(tabuleiro):
     IDLinha = IDLinhaInicial + pos
     print(IDLinha, item)
+
