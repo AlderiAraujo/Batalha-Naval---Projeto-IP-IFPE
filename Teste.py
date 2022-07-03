@@ -28,6 +28,8 @@ while continuar:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if rect.collidepoint(pygame.mouse.get_pos()):
                 print("clicou dentro")
+                tela.blit(OndaTabuleiro, (450, 450))
+
             else:
                 print("clicou fora")
 

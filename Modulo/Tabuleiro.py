@@ -3,6 +3,7 @@ import pygame
 linha = 8
 coluna = 8
 
+WHITE = (255, 255, 255)
 TabuleiroFundo = []
 IndiceAlfa = []
 IndiceNum = []
@@ -14,10 +15,10 @@ tela = pygame.display.set_mode((1060, 500))
 ImgOceano = pygame.image.load("./Modulo/Repositorio-Imagens/oceano.jpg")
 ImgOceanoTabuleiro = pygame.transform.scale(ImgOceano, (48,48))
 for l in range(0, linha):
-    LinhaFundo = []
+    linhaFundo = []
     for c in range(0, coluna):
-        LinhaFundo.append(ImgOceanoTabuleiro)
-    TabuleiroFundo.append(LinhaFundo)
+        linhaFundo.append(ImgOceanoTabuleiro)
+    TabuleiroFundo.append(linhaFundo)
 
 #loop para load, redimensionamento e adição de imagens dos índices alfabeticos(colunas) em lista
 base = 65
@@ -49,7 +50,15 @@ def FundoTabuleiro():   #função para adicionar o fundo do tabuleiro
         for c in range(0, coluna):
             tela.blit(IndiceNum[l], (pos_x, pos_y))
         pos_y += 50
-    #loop para posicionamento da matriz de fundo do lado 1
+    # loop para criacao da base do tabuleiro 1 que possibilita interação com mouse
+    pos_y = 50
+    for l in range(0, linha):
+        pos_x = 50
+        for c in range(0, coluna):
+            base_fundo = pygame.draw.rect(tela, WHITE, (pos_x, pos_y, 48, 48))
+            pos_x += 50
+        pos_y += 50
+    # loop para posicionamento da matriz de fundo do lado 1
     pos_y = 50
     for l in range(0, linha):
         pos_x = 50
@@ -70,6 +79,14 @@ def FundoTabuleiro():   #função para adicionar o fundo do tabuleiro
         pos_x = 1010
         for c in range(0, coluna):
             tela.blit(IndiceNum[l], (pos_x, pos_y))
+        pos_y += 50
+    # loop para criacao da base do tabuleiro 2 que possibilita interação com mouse
+    pos_y = 50
+    for l in range(0, linha):
+        pos_x = 610
+        for c in range(0, coluna):
+            base_fundo = pygame.draw.rect(tela, WHITE, (pos_x, pos_y, 48, 48))
+            pos_x += 50
         pos_y += 50
     #loop para posicionamento da matriz de fundo do lado 2
     pos_y = 50
