@@ -2,6 +2,7 @@
 import pygame
 from Modulo.Tabuleiro import *
 from Modulo.Jogabilidade import *
+from Modulo.TabuleiroTest import *
 
 
 tela = pygame.display.set_mode((1060,500))
@@ -16,26 +17,16 @@ while continuar:
         pygame.draw.rect(tela, RED, [525, 0, 10, 500])  # linha divisória dos tabuleiros
         if event.type == pygame.QUIT:   #condição para saída do loop de eventos, apertando o botão "X" da janela
             continuar = False
+
         #funções de tabuleiro
 
-        FundoTabuleiro()
-        TabuleiroPlayer1()
-        TabuleiroPlayer2()
+        tabuleiroJogador = Tabuleiro()
+        tabuleiroJogador.desenhaTabuleiro(tela, 50, 50)
 
-        rect = pygame.draw.rect(tela, WHITE, (450, 450, 48, 48))
-        tela.blit(ImgOceanoTabuleiro, (450, 450))
+        tabuleiroJogador2 = Tabuleiro()
+        tabuleiroJogador2.desenhaTabuleiro(tela, 610, 50)
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if rect.collidepoint(pygame.mouse.get_pos()):
-                print("clicou dentro")
-                tela.blit(OndaTabuleiro, (450, 450))
-
-            else:
-                print("clicou fora")
+        #if event.type == pygame.MOUSEBUTTONDOWN:
 
     #funções de jogabilidade
-
-
-
-
     pygame.display.update() #comando para atualização de frame
