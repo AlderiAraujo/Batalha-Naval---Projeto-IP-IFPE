@@ -1,6 +1,6 @@
 #Arquivo cópia do Main para efeito de teste, deve ser apagado no fim do projeto
 import pygame
-from Modulo.TabuleiroTest import *
+from modulo.TabuleiroTest import *
 
 
 tela = pygame.display.set_mode((1060,500))
@@ -20,37 +20,19 @@ while continuar:
 
         #funções de tabuleiro
 
-        tabuleiroJogador = Tabuleiro(50, 50)
-        tabuleiroJogador.desenhaTabuleiro(tela)
+        tabuleiroJogador = Tabuleiro(tela, 50, 50)
 
-        tabuleiroJogador2 = Tabuleiro(610, 50)
-        tabuleiroJogador2.desenhaTabuleiro(tela)
+        tabuleiroJogador2 = Tabuleiro(tela, 610, 50)
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             #tabuleiroJogador.avaliaCliqueTabuleiro()
+            #print(tabuleiroJogador.pos_clicada)
+
             tabuleiroJogador2.avaliaCliqueTabuleiro()
+            print(tabuleiroJogador2.pos_clicada)
 
-            """y = 50
-            for l in range(0, 8):
-                x = 50
-                for c in range(0, 8):
-                    if tabuleiroJogador.matrizTabuleiro[l][c].get_rect(topleft=(x, y)).collidepoint(mouse):
-                        print("cliquei dentro do sprite\n")
-                        print((x, y))
-                        print(is_cliclked)
-                    else:
-                        print("Não pegou o clique")
-                        #print((x, y), is_cliclked)
-                    x += 50
-                y += 50"""
 
-            #if tabuleiroJogador.rect.collidepoint(x, y):
-            #    print("cliquei dentro do sprite")
-            #    print((x, y))
-            #    print(is_cliclked)
-           #else:
-            #    print("Não pegou o clique")
-            #    print((x, y), is_cliclked)
+
 
     #funções de jogabilidade
     pygame.display.update() #comando para atualização de frame

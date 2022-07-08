@@ -14,7 +14,7 @@ tela = pygame.display.set_mode((1060, 500))
 
 
 #load e redimensionamento de imagem de fundo e loop para criação de matriz para o fundo do tabuleiro
-ImgOceano = pygame.image.load("./Modulo/Repositorio-Imagens/oceano.jpg")
+ImgOceano = pygame.image.load("./modulo/Repositorio-Imagens/oceano.jpg")
 ImgOceanoTabuleiro = pygame.transform.scale(ImgOceano, (48,48))
 for l in range(0, linha):
     linhaFundo = []
@@ -26,14 +26,14 @@ for l in range(0, linha):
 base = 65
 for cont in range(0, linha):
     atual = base + cont
-    Img = pygame.image.load(f"./Modulo/Repositorio-Imagens/Img{atual}.jpg")
+    Img = pygame.image.load(f"./modulo/Repositorio-Imagens/Img{atual}.jpg")
     TabuleiroImg = pygame.transform.scale(Img, (48, 48))
     IndiceAlfa.append(TabuleiroImg)
 #loop para load, redimensionamento e adição de imagens dos índices numericos(linhas) em lista
 base = 1
 for cont in range(0, linha):
     atual = base + cont
-    Img = pygame.image.load(f"./Modulo/Repositorio-Imagens/Img{atual}.jpg")
+    Img = pygame.image.load(f"./modulo/Repositorio-Imagens/Img{atual}.jpg")
     TabuleiroImg = pygame.transform.scale(Img, (48, 48))
     IndiceNum.append(TabuleiroImg)
 
@@ -86,7 +86,7 @@ def fundoTabuleiro():   #função para adicionar o fundo do tabuleiro
     return tela
 
 #load e redimensionamento de imagem de fundo e loop para criação de matriz do tabuleiro
-ImgOnda = pygame.image.load("./Modulo/Repositorio-Imagens/onda.png")
+ImgOnda = pygame.image.load("./modulo/Repositorio-Imagens/onda.png")
 OndaTabuleiro = pygame.transform.scale(ImgOnda, (48,48))
 def criaMatrizTabuleiro1():
     for l in range(0, linha):
