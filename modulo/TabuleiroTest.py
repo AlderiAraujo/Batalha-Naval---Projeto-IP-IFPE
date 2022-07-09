@@ -114,20 +114,6 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return indiceAlfabetico, indiceNumerico
 
-    def avaliaCliqueTabuleiro(self):
-
-        mouse = pygame.mouse.get_pos()
-        self.pos_clicada = ()
-        y = self.pos_y
-        for l in range(0, 8):
-            x = self.pos_x
-            for c in range(0, 8):
-                if mouse[0] and self.matrizTabuleiro[l][c].get_rect(topleft=(x, y)).collidepoint(mouse):
-                    print("clique funcionando")
-                    self.pos_clicada = (l, c)
-                    return self.pos_clicada
-                x += 50
-            y += 50
 
     def atualizaTabuleiro(self, linha, coluna, imagem):
         pass

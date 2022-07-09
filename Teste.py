@@ -1,6 +1,7 @@
 #Arquivo cópia do Main para efeito de teste, deve ser apagado no fim do projeto
 import pygame
 from modulo.TabuleiroTest import *
+from modulo.Jogabilidade import Jogabilidade
 
 
 tela = pygame.display.set_mode((1060,500))
@@ -19,20 +20,17 @@ while continuar:
             continuar = False
 
         #funções de tabuleiro
-
         tabuleiroJogador = Tabuleiro(tela, 50, 50)
-
         tabuleiroJogador2 = Tabuleiro(tela, 610, 50)
 
+        #funções de jogabilidade
         if event.type == pygame.MOUSEBUTTONDOWN:
-            #tabuleiroJogador.avaliaCliqueTabuleiro()
-            #print(tabuleiroJogador.pos_clicada)
-
-            tabuleiroJogador2.avaliaCliqueTabuleiro()
-            print(tabuleiroJogador2.pos_clicada)
-
+            joga = Jogabilidade()
+            joga.avaliaCliqueTabuleiro(tabuleiroJogador.matrizTabuleiro, 50, 50)
+            print(joga.pos_tela)
+            print(joga.pos_clicada)
 
 
 
-    #funções de jogabilidade
+
     pygame.display.update() #comando para atualização de frame
