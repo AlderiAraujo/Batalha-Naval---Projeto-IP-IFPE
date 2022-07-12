@@ -1,5 +1,4 @@
 import pygame
-from modulo.embarcacoes import *
 
 class Tabuleiro(pygame.sprite.Sprite):
     def __init__(self, tela, pos_x, pos_y):
@@ -59,15 +58,15 @@ class Tabuleiro(pygame.sprite.Sprite):
             y += 50
         pygame.display.update()
         indiceAlfabetico, indiceNumerico = self.criaIndices()
-        #loop para posicionamento dos índices alfabeticos(colunas) do lado 1
         if self.pos_x == 50:
+            # loop para posicionamento dos índices alfabeticos(colunas) do lado 1
             y = 0
             for l in range(0, linha):
                 x = 50
                 for c in range(0, coluna):
                     tela.blit(indiceAlfabetico[c], (x, y))
                     x += 50
-            #loop para posicionamento dos índices numéricos(linhas) do lado 1
+            # loop para posicionamento dos índices numéricos(linhas) do lado 1
             y = 50
             for l in range(0, linha):
                 x = 0
@@ -75,14 +74,14 @@ class Tabuleiro(pygame.sprite.Sprite):
                     tela.blit(indiceNumerico[l], (x, y))
                 y += 50
         else:
-            #loop para posicionamento dos índices alfabeticos(colunas) do lado 2
+            # loop para posicionamento dos índices alfabeticos(colunas) do lado 2
             y = 0
             for l in range(0, linha):
                 x = 610
                 for c in range(0, coluna):
                     tela.blit(indiceAlfabetico[c], (x, y))
                     x += 50
-            #loop para posicionamento dos índices numéricos(linhas) do lado 2
+            # loop para posicionamento dos índices numéricos(linhas) do lado 2
             y = 50
             for l in range(0, linha):
                 x = 1010
@@ -90,28 +89,10 @@ class Tabuleiro(pygame.sprite.Sprite):
                     tela.blit(indiceNumerico[l], (x, y))
                 y += 50
 
-        opcaoEmbarcacao = self.criaEmbarcacao()
-        if self.pos_x == 50:
-            # loop para posicionamento das opções de embarcações do lado 1
-            y = 450
-            for l in range(0, 3):
-                x = 50
-                for c in range(0, 3):
-                    tela.blit(opcaoEmbarcacao[c], (x, y))
-                    x += 50
-
-        else:
-            # loop para posicionamento das opções de embarcações do lado 2
-            y = 450
-            for l in range(0, 3):
-                x = 610
-                for c in range(0, 3):
-                    tela.blit(opcaoEmbarcacao[c], (x, y))
-                    x += 50
 
 
     def criaIndices(self):
-        #loop para load, redimensionamento e adição de imagens dos índices alfabeticos(colunas) em lista
+        # loop para load, redimensionamento e adição de imagens dos índices alfabeticos(colunas) em lista
         indiceAlfabetico = []
         base = 65
         for cont in range(0, 8):
@@ -120,7 +101,7 @@ class Tabuleiro(pygame.sprite.Sprite):
             imgIndice = pygame.transform.scale(img, (48, 48))
             indiceAlfabetico.append(imgIndice)
 
-        #loop para load, redimensionamento e adição de imagens dos índices numericos(linhas) em lista
+        # loop para load, redimensionamento e adição de imagens dos índices numericos(linhas) em lista
         indiceNumerico = []
         base = 1
         for cont in range(0, 8):
@@ -131,13 +112,17 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return indiceAlfabetico, indiceNumerico
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> parent of bb02724 (Update TabuleiroTest.py)
 
     def atualiza(self, linha, coluna, imagem, tela):
 
         self.matrizTabuleiro[linha][coluna] = imagem
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Stashed changes
@@ -163,6 +148,8 @@ class Tabuleiro(pygame.sprite.Sprite):
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of bb02724 (Update TabuleiroTest.py)
 
         y = self.pos_y
         for l in range(0, 8):
