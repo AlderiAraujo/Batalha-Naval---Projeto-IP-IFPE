@@ -21,18 +21,12 @@ class Jogabilidade:
                 x += 50
             y += 50
 
-    def inserirBarco(self, tipo):
-        imgSubmarino = pygame.image.load("./modulo/Repositorio-Imagens/submarino.png")
-        imgSubmarinoFormat = pygame.transform.scale(imgSubmarino, (30, 30))
+    def inserirBarco(self, nome):
 
-        self.tipo = tipo
-        if self.tipo == 'submarino':
-            self.tipo = Embarcacao(self.tipo, imgSubmarinoFormat)
+        self.nome = nome
+        if self.nome == 'submarino':
+            self.tipo = Embarcacao(self.nome)
             return self.tipo
-
-
-
-
 
 
     def tiro(self):
