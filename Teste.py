@@ -1,7 +1,7 @@
 #Arquivo cópia do Main para efeito de teste, deve ser apagado no fim do projeto
 import pygame
 from modulo.TabuleiroTest import *
-from modulo.Jogabilidade import Jogabilidade
+from modulo.jogabilidade import Jogabilidade
 from modulo.menu import menu
 
 tela = pygame.display.set_mode((1060,500))
@@ -20,7 +20,7 @@ while continuar:
         if event.type == pygame.QUIT:   #condição para saída do loop de eventos, apertando o botão "X" da janela
             continuar = False
 
-        menu(tela)
+        #menu(tela)
 
         #funções de tabuleiro
         tabuleiroJogador1.desenhaMatrizJogavel(tela)
