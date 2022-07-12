@@ -1,6 +1,6 @@
 import pygame
-from modulo.Tabuleiro import fundoTabuleiro, tabuleiroPlayer1, tabuleiroPlayer2
-from modulo.Jogabilidade import *
+from modulo.tabuleiro import fundoTabuleiro, tabuleiroPlayer1, tabuleiroPlayer2
+from modulo.jogabilidade import *
 
 
 pygame.display.set_caption("Batalha Naval")
