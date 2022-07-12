@@ -20,7 +20,7 @@ while continuar:
         if event.type == pygame.QUIT:   #condição para saída do loop de eventos, apertando o botão "X" da janela
             continuar = False
 
-        #menu(tela)
+        menu(tela)
 
         #funções de tabuleiro
         tabuleiroJogador1.desenhaMatrizJogavel(tela)
