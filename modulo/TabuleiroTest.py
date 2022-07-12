@@ -133,11 +133,14 @@ class Tabuleiro(pygame.sprite.Sprite):
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     def atualiza(self, linha, coluna, imagem, tela):
 
         self.matrizTabuleiro[linha][coluna] = imagem
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     def criaEmbarcacao (self):
@@ -154,6 +157,9 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return opcaoEmbarcacao
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
