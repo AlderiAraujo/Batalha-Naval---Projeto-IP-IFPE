@@ -131,12 +131,11 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return opcaoEmbarcacao
 
-
+        opcaoEmbarcacao = self.criaEmbarcacao()
         y = self.pos_y
-        for l in range(0, 8):
+        for l in range(0, 3):
             x = self.pos_x
-            for c in range(0, 8):
-                tela.blit(self.matrizTabuleiro[l][c], (x, y))
+            for c in range(0, 3):
+                tela.blit(self.opcaoEmbarcacao[c], (x, y))
                 x += 50
-            y += 50
 
