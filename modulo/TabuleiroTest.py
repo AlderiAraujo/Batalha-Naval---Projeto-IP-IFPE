@@ -1,6 +1,5 @@
 import pygame
 
-
 class Tabuleiro(pygame.sprite.Sprite):
     def __init__(self, tela, pos_x, pos_y):
         super().__init__()
@@ -113,6 +112,21 @@ class Tabuleiro(pygame.sprite.Sprite):
             indiceNumerico.append(imgIndice)
 
         return indiceAlfabetico, indiceNumerico
+
+    def criaEmbarcacao (self):
+        opcaoEmbarcacao = []
+        ImgSubmarino = pygame.image.load("./Repositorio-Imagens/submarino.png")
+        ImgSubmarinoFormat = pygame.transform.scale(ImgSubmarino, (largura, altura))
+        opcaoEmbarcacao.append(ImgSubmarinoFormat)
+
+        ImgCruzador = pygame.image.load("./Repositorio-Imagens/cruzador.png")
+        ImgCruzadorFormat = pygame.transform.scale(ImgCruzador, (largura, altura))
+        opcaoEmbarcacao.append(ImgCruzadorFormat)
+
+        ImgPortaAvioes = pygame.image.load("./Repositorio-Imagens/portaAvioes.png")
+        ImgPortaAvioesFormat = pygame.transform.scale(ImgPortaAvioes, (largura, altura))
+        pass
+
 
 
     def atualizaTabuleiro(self, linha, coluna, imagem):
