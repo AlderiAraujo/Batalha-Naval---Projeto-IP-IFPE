@@ -21,10 +21,9 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         self.matrizTabuleiro = []
         self.desenhaTabuleiro(tela)
-        self.desenhaMatrizJogavel(tela)
+        #self.desenhaMatrizJogavel(tela)
 
     def desenhaMatrizJogavel(self, tela, linha=8, coluna=8):
-
 
         self.matrizTabuleiro = []
         for l in range(0, linha):
@@ -47,7 +46,7 @@ class Tabuleiro(pygame.sprite.Sprite):
         for l in range(0, linha):
             linhaTabuleiro = []
             for c in range(0, coluna):
-                linhaTabuleiro.append(self.image)
+                linhaTabuleiro.append(self.imgOceanoFormat)
             matrizFundo.append(linhaTabuleiro)
 
         y = self.pos_y
@@ -57,7 +56,7 @@ class Tabuleiro(pygame.sprite.Sprite):
                 tela.blit(matrizFundo[l][c], (x, y))
                 x += 50
             y += 50
-
+        pygame.display.update()
         indiceAlfabetico, indiceNumerico = self.criaIndices()
         if self.pos_x == 50:
             # loop para posicionamento dos índices alfabeticos(colunas) do lado 1
@@ -113,21 +112,16 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return indiceAlfabetico, indiceNumerico
 
-    def criaEmbarcacao (self):
-        opcaoEmbarcacao = []
-        ImgSubmarino = pygame.image.load("./Repositorio-Imagens/submarino.png")
-        ImgSubmarinoFormat = pygame.transform.scale(ImgSubmarino, (largura, altura))
-        opcaoEmbarcacao.append(ImgSubmarinoFormat)
 
-        ImgCruzador = pygame.image.load("./Repositorio-Imagens/cruzador.png")
-        ImgCruzadorFormat = pygame.transform.scale(ImgCruzador, (largura, altura))
-        opcaoEmbarcacao.append(ImgCruzadorFormat)
+    def atualiza(self, linha, coluna, imagem, tela):
 
-        ImgPortaAvioes = pygame.image.load("./Repositorio-Imagens/portaAvioes.png")
-        ImgPortaAvioesFormat = pygame.transform.scale(ImgPortaAvioes, (largura, altura))
-        pass
+        self.matrizTabuleiro[linha][coluna] = imagem
 
+        y = self.pos_y
+        for l in range(0, 8):
+            x = self.pos_x
+            for c in range(0, 8):
+                tela.blit(self.matrizTabuleiro[l][c], (x, y))
+                x += 50
+            y += 50
 
-
-    def atualizaTabuleiro(self, linha, coluna, imagem):
-        pass

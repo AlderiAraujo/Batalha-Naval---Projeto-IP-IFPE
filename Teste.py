@@ -11,7 +11,8 @@ GREY = (50, 50, 50)
 
 tela.fill(GREY)
 
-
+tabuleiroJogador1 = Tabuleiro(tela, 50, 50)
+tabuleiroJogador2 = Tabuleiro(tela, 610, 50)
 continuar = True
 while continuar:
     for event in pygame.event.get():
@@ -22,19 +23,25 @@ while continuar:
         #menu(tela)
 
         #funções de tabuleiro
-        tabuleiroJogador1 = Tabuleiro(tela, 50, 50)
-        tabuleiroJogador2 = Tabuleiro(tela, 610, 50)
+        tabuleiroJogador1.desenhaMatrizJogavel(tela)
+
+
 
         #funções de jogabilidade
         if event.type == pygame.MOUSEBUTTONDOWN:
             joga = Jogabilidade()
-            joga.avaliaCliqueTabuleiro(tabuleiroJogador1.matrizTabuleiro, 50, 50)
+            joga.avaliaCliqueTabuleiro(50, 50, tabuleiroJogador1.matrizTabuleiro)
             print(joga.pos_tela)
             print(joga.pos_clicada)
+            linha, coluna = joga.pos_clicada
+            x, y = joga.pos_tela
+            joga.inserirBarco("submarino")
+            tabuleiroJogador1.atualiza(linha, coluna, joga.tipo.imgSubmarinoFormat,tela)
 
-            joga.avaliaCliqueTabuleiro(tabuleiroJogador2.matrizTabuleiro, 610, 50)
-            print(joga.pos_tela)
-            print(joga.pos_clicada)
+
+            #joga.avaliaCliqueTabuleiro(tabuleiroJogador2.matrizTabuleiro, 610, 50)
+            #print(joga.pos_tela)
+            #print(joga.pos_clicada)
 
 
 

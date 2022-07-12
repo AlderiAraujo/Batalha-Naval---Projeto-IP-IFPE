@@ -4,7 +4,7 @@ from modulo.embarcacoes import Embarcacao
 
 class Jogabilidade:
 
-    def avaliaCliqueTabuleiro(self, matrizTabuleiro, pos_x, pos_y):
+    def avaliaCliqueTabuleiro(self,pos_x, pos_y, matrizTabuleiro=None):
 
         mouse = pygame.mouse.get_pos()
         self.pos_clicada = ()
