@@ -25,6 +25,7 @@ class Tabuleiro(pygame.sprite.Sprite):
         self.linhaTabuleiro = []
         self.desenhaTabuleiro(tela)
         #self.desenhaMatrizJogavel(tela)
+        self.adicionaEmbarcacao(9)
 
     def desenhaMatrizJogavel(self, tela, linha=8, coluna=8):
 
@@ -117,10 +118,10 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return indiceAlfabetico, indiceNumerico
 
-    def sorteia(self, quantidadeEmbarcacao):
+    def sorteia(self, quantidade):
 
         self.tuplas_sorteadas = []
-        for i in range(0, quantidadeEmbarcacao):
+        for i in range(0, quantidade):
             tupla = ()
             lista = [0, 1, 2, 3, 4, 5, 6, 7]
             pos_sorteada = []
@@ -136,13 +137,60 @@ class Tabuleiro(pygame.sprite.Sprite):
         return self.tuplas_sorteadas
 
     def adicionaEmbarcacao(self, quantidade):
+        listaDeTuplas = self.sorteia(quantidade)
 
-        self.sorteia(quantidade)
-        tupla1 = self.tuplas_sorteadas[0]
-        linha, coluna = tupla1
-        #self.matrizFundo[linha][coluna] = imagem
-        #self.novaImg = imagem
-        #return self.novaImg
+        for i in range(0, 9):
+
+            if quantidade > 4 :
+                imgSubmarino = pygame.image.load("./modulo/Repositorio-Imagens/submarino.png")
+                imgSubmarinoFormat = pygame.transform.scale(imgSubmarino, (48, 48))
+
+                tupla1 = listaDeTuplas[0]
+                tupla2 = listaDeTuplas[1]
+                tupla3 = listaDeTuplas[2]
+                tupla4 = listaDeTuplas[3]
+                tupla5 = listaDeTuplas[4]
+
+                l0, c0 = tupla1
+                l1, c1 = tupla2
+                l2, c2 = tupla3
+                l3, c3 = tupla4
+                l4, c4 = tupla5
+
+                self.matrizFundo[l0][c0] = imgSubmarinoFormat
+                self.matrizFundo[l1][c1] = imgSubmarinoFormat
+                self.matrizFundo[l2][c2] = imgSubmarinoFormat
+                self.matrizFundo[l3][c3] = imgSubmarinoFormat
+                self.matrizFundo[l4][c4] = imgSubmarinoFormat
+                quantidade-=1
+
+            elif quantidade > 1:
+                imgCruzador = pygame.image.load("./modulo/Repositorio-Imagens/cruzador.png")
+                imgCruzadorFormat = pygame.transform.scale(imgCruzador, (48, 48))
+                tupla6 = listaDeTuplas[5]
+                tupla7 = listaDeTuplas[6]
+                tupla8 = listaDeTuplas[7]
+
+                l5, c5 = tupla6
+                l6, c6 = tupla7
+                l7, c7 = tupla8
+
+                self.matrizFundo[l5][c7] = imgCruzadorFormat
+                self.matrizFundo[l6][c6] = imgCruzadorFormat
+                self.matrizFundo[l7][c5] = imgCruzadorFormat
+                quantidade-=1
+
+            elif quantidade == 1:
+                imgPortaAvioes = pygame.image.load("./modulo/Repositorio-Imagens/portaAvioes.png")
+                imgPortaAvioesFormat = pygame.transform.scale(imgPortaAvioes, (48, 48))
+                tupla9 = listaDeTuplas[8]
+                linha, coluna = tupla9
+                self.matrizFundo[linha][coluna] = imgPortaAvioesFormat
+                break
+
+
+
+
 
     def exibe(self, tela):
         y = self.pos_y
