@@ -48,8 +48,3 @@ class Jogabilidade:
             print("errou")
 
 
-    def adicionaBarco(self):
-        nome = 'submarino'
-        cont = 0
-        while cont <= 5:
-
