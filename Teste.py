@@ -28,10 +28,13 @@ while continuar:
         imgSubmarino = pygame.image.load("./modulo/Repositorio-Imagens/submarino.png")
         imgSubmarinoFormat = pygame.transform.scale(imgSubmarino, (48, 48))
         tabuleiroJogador1.adicionaEmbarcacao(0, 0, imgSubmarinoFormat)
+        tabuleiroJogador1.adicionaEmbarcacao(1, 6, imgSubmarinoFormat)
 
+        tabuleiroJogador2.adicionaEmbarcacao(7, 7, imgSubmarinoFormat)
         #funções de jogabilidade
         if event.type == pygame.MOUSEBUTTONDOWN:
             tabuleiroJogador1.avaliaCliqueTabuleiro(50, 50, tela)
+            tabuleiroJogador2.avaliaCliqueTabuleiro(610, 50, tela)
 
 
 

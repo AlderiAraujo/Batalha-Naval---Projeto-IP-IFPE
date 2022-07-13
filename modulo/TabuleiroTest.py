@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class Tabuleiro(pygame.sprite.Sprite):
     def __init__(self, tela, pos_x, pos_y):
@@ -116,12 +117,32 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return indiceAlfabetico, indiceNumerico
 
+    def sorteia(self, quantidadeEmbarcacao):
 
-    def adicionaEmbarcacao(self, linha, coluna, imagem):
+        self.tuplas_sorteadas = []
+        for i in range(0, quantidadeEmbarcacao):
+            tupla = ()
+            lista = [0, 1, 2, 3, 4, 5, 6, 7]
+            pos_sorteada = []
 
-        self.matrizFundo[linha][coluna] = imagem
-        self.novaImg = imagem
-        return self.novaImg
+            for i in range(0, 2):
+                pos_sorteada.append(random.choice(range(0, len(lista))))
+            tupla = tuple(pos_sorteada)
+            if tupla not in self.tuplas_sorteadas:
+                self.tuplas_sorteadas.append(tupla)
+            else:
+                continue
+
+        return self.tuplas_sorteadas
+
+    def adicionaEmbarcacao(self, quantidade):
+
+        self.sorteia(quantidade)
+        tupla1 = self.tuplas_sorteadas[0]
+        linha, coluna = tupla1
+        #self.matrizFundo[linha][coluna] = imagem
+        #self.novaImg = imagem
+        #return self.novaImg
 
     def exibe(self, tela):
         y = self.pos_y
