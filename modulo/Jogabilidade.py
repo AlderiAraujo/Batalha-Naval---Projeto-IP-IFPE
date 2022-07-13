@@ -21,13 +21,13 @@ class Jogabilidade:
                 x += 50
             y += 50
 
+
+
     def inserirBarco(self, nome):
 
         self.nome = nome
         if self.nome == 'submarino':
-
             self.tipo = Embarcacao(self.nome)
-
             return self.tipo
 
         elif self.nome == 'portaAvioes':
@@ -40,11 +40,10 @@ class Jogabilidade:
 
 
     def tiro(self, matriz=None):
-        self.avaliaCliqueTabuleiro(50, 50, matriz)
-        x, y = self.pos_clicada
-        if matriz[x][y] == Embarcacao:
-            print("acertou barco")
-        else:
-            print("errou")
+      pass
 
+    def inserirSubmarino(self):
 
+        self.imgSubmarino = pygame.image.load("./modulo/Repositorio-Imagens/submarino.png")
+        self.imgSubmarinoFormat = pygame.transform.scale(self.imgSubmarino, (48, 48))
+        self.codigo = 1

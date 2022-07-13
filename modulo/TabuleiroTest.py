@@ -31,14 +31,16 @@ class Tabuleiro(pygame.sprite.Sprite):
         for l in range(0, linha):
             self.linhaTabuleiro = []
             for c in range(0, coluna):
-                self.linhaTabuleiro.append(self.imgOndaFormat)
+                self.linhaTabuleiro.append(0)
             self.matrizTabuleiro.append(self.linhaTabuleiro)
+
 
         y = self.pos_y
         for l in range(0, linha):
             x = self.pos_x
             for c in range(0, coluna):
-                tela.blit(self.matrizTabuleiro[l][c], (x, y))
+                if self.matrizTabuleiro[l][c] == 0:
+                    tela.blit(self.matrizTabuleiro[l][c], (x, y))
                 x += 50
             y += 50
 
