@@ -33,11 +33,8 @@ while continuar:
             joga = Jogabilidade()
             joga.avaliaCliqueTabuleiro(50, 50, tabuleiroJogador1.matrizFundo)
             linha, coluna = joga.pos_clicada
-
             joga.inserirBarco('submarino')
             tabuleiroJogador1.atualiza(linha, coluna, joga.tipo.img, tela)
-
-
 
             #joga.avaliaCliqueTabuleiro(tabuleiroJogador2.matrizTabuleiro, 610, 50)
             #print(joga.pos_tela)
