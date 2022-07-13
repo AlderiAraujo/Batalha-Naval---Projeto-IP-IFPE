@@ -13,7 +13,7 @@ tela.fill(GREY)
 
 tabuleiroJogador1 = Tabuleiro(tela, 50, 50)
 tabuleiroJogador2 = Tabuleiro(tela, 610, 50)
-#tabuleiroJogador1.desenhaMatrizJogavel(tela)
+
 continuar = True
 while continuar:
     for event in pygame.event.get():
