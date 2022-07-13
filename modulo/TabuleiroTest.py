@@ -19,18 +19,20 @@ class Tabuleiro(pygame.sprite.Sprite):
         self.image = self.sprites[self.spriteAtual]
         self.rect = self.image.get_rect(topleft=(self.pos_x, self.pos_y))
 
+        self.matrizFundo = []
         self.matrizTabuleiro = []
+        self.linhaTabuleiro = []
         self.desenhaTabuleiro(tela)
-        self.desenhaMatrizJogavel(tela)
+        #self.desenhaMatrizJogavel(tela)
 
     def desenhaMatrizJogavel(self, tela, linha=8, coluna=8):
 
         self.matrizTabuleiro = []
         for l in range(0, linha):
-            linhaTabuleiro = []
+            self.linhaTabuleiro = []
             for c in range(0, coluna):
-                linhaTabuleiro.append(self.imgOndaFormat)
-            self.matrizTabuleiro.append(linhaTabuleiro)
+                self.linhaTabuleiro.append(self.imgOndaFormat)
+            self.matrizTabuleiro.append(self.linhaTabuleiro)
 
         y = self.pos_y
         for l in range(0, linha):
@@ -42,18 +44,18 @@ class Tabuleiro(pygame.sprite.Sprite):
 
     def desenhaTabuleiro(self, tela, linha=8, coluna=8):
 
-        matrizFundo = []
+        self.matrizFundo = []
         for l in range(0, linha):
             linhaTabuleiro = []
             for c in range(0, coluna):
                 linhaTabuleiro.append(self.imgOceanoFormat)
-            matrizFundo.append(linhaTabuleiro)
+            self.matrizFundo.append(linhaTabuleiro)
 
         y = self.pos_y
         for l in range(0, linha):
             x = self.pos_x
             for c in range(0, coluna):
-                tela.blit(matrizFundo[l][c], (x, y))
+                tela.blit(self.matrizFundo[l][c], (x, y))
                 x += 50
             y += 50
         pygame.display.update()
@@ -115,7 +117,16 @@ class Tabuleiro(pygame.sprite.Sprite):
 
     def atualiza(self, linha, coluna, imagem, tela):
 
-        self.matrizTabuleiro[linha][coluna] = imagem
+        self.matrizFundo[linha][coluna] = imagem
+
+
+        y = self.pos_y
+        for l in range(0, 8):
+            x = self.pos_x
+            for c in range(0, 8):
+                tela.blit(self.matrizFundo[l][c], (x, y))
+                x += 50
+            y += 50
 
     def criaEmbarcacao (self):
         opcaoEmbarcacao = []

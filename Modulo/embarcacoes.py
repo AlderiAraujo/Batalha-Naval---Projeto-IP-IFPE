@@ -8,6 +8,7 @@ class Embarcacao:
         self.nome = nome
 
 
+
         if self.nome == "submarino":
             self.imgSubmarino = pygame.image.load("./modulo/Repositorio-Imagens/submarino.png")
             self.imgSubmarinoFormat = pygame.transform.scale(self.imgSubmarino, (largura, altura))
