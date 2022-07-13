@@ -117,11 +117,13 @@ class Tabuleiro(pygame.sprite.Sprite):
         return indiceAlfabetico, indiceNumerico
 
 
-    def atualiza(self, linha, coluna, imagem, tela):
+    def adicionaEmbarcacao(self, linha, coluna, imagem):
 
         self.matrizFundo[linha][coluna] = imagem
+        self.novaImg = imagem
+        return self.novaImg
 
-
+    def exibe(self, tela):
         y = self.pos_y
         for l in range(0, 8):
             x = self.pos_x
@@ -130,25 +132,27 @@ class Tabuleiro(pygame.sprite.Sprite):
                 x += 50
             y += 50
 
-    def criaEmbarcacao (self):
-        opcaoEmbarcacao = []
-        self.ImgSubmarino = pygame.image.load("./Repositorio-Imagens/submarino.png")
-        self.ImgSubmarinoFormat = pygame.transform.scale(self.ImgSubmarino, (48, 48))
-        self.opcaoEmbarcacao.append(self.ImgSubmarinoFormat)
-        self.ImgCruzador = pygame.image.load("./Repositorio-Imagens/cruzador.png")
-        self.ImgCruzadorFormat = pygame.transform.scale(self.ImgCruzador, (48, 48))
-        self.opcaoEmbarcacao.append(self.ImgCruzadorFormat)
-        self.ImgPortaAvioes = pygame.image.load("./Repositorio-Imagens/portaAvioes.png")
-        self.ImgPortaAvioesFormat = pygame.transform.scale(self.ImgPortaAvioes, (48, 48))
-        self.opcaoEmbarcacao.append(self.ImgPortaAvioesFormat)
 
-        return opcaoEmbarcacao
-
-        opcaoEmbarcacao = self.criaEmbarcacao()
-        y = self.pos_y
-        for l in range(0, 3):
-            x = self.pos_x
-            for c in range(0, 3):
-                tela.blit(self.opcaoEmbarcacao[c], (x, y))
+    def avaliaCliqueTabuleiro(self, pos_x, pos_y, tela=None):
+        mouse = pygame.mouse.get_pos()
+        self.pos_clicada = ()
+        self.pos_tela = ()
+        y = pos_y
+        for l in range(0, 8):
+            x = pos_x
+            for c in range(0, 8):
+                if mouse[0] and self.matrizFundo[l][c].get_rect(topleft=(x, y)).collidepoint(mouse):
+                    if self.matrizFundo[l][c] == self.imgOceanoFormat:
+                        print("errou")
+                        erro = pygame.image.load("./modulo/Repositorio-Imagens/x.png")
+                        erroImg = pygame.transform.scale(erro, (48, 48))
+                        self.matrizFundo[l][c] = erroImg
+                        tela.blit(self.matrizFundo[l][c], (x, y))
+                    else:
+                        print("acertou")
+                        tela.blit(self.matrizFundo[l][c], (x, y))
+                    self.pos_clicada = (l, c)
+                    self.pos_tela = (x, y)
+                    return self.pos_clicada, self.pos_tela
                 x += 50
-
+            y += 50
