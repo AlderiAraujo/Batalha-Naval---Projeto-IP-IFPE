@@ -1,6 +1,8 @@
 import pygame
 import random
 
+VEZ = 'JOGADOR1'
+
 class Tabuleiro(pygame.sprite.Sprite):
     def __init__(self, tela, pos_x, pos_y):
         super().__init__()
@@ -9,44 +11,16 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         self.imgOceano = pygame.image.load("./modulo/Repositorio-Imagens/oceano.jpg")
         self.imgOceanoFormat = pygame.transform.scale(self.imgOceano, (48, 48))
-        self.imgOnda = pygame.image.load("./modulo/Repositorio-Imagens/onda.png")
-        self.imgOndaFormat = pygame.transform.scale(self.imgOnda, (48, 48))
-
-        self.sprites = []
-        self.sprites.append(self.imgOceanoFormat)
-        self.sprites.append(self.imgOndaFormat)
-
-        self.spriteAtual = 0
-        self.image = self.sprites[self.spriteAtual]
-        self.rect = self.image.get_rect(topleft=(self.pos_x, self.pos_y))
 
         self.matrizFundo = []
-        self.matrizTabuleiro = []
-        self.linhaTabuleiro = []
-        self.desenhaTabuleiro(tela)
-        #self.desenhaMatrizJogavel(tela)
-        self.adicionaEmbarcacao(9)
+        self.desenha_tabuleiro(tela)
+        self.adiciona_embarcacoes(9)
 
-    def desenhaMatrizJogavel(self, tela, linha=8, coluna=8):
-
-        self.matrizTabuleiro = []
-        for l in range(0, linha):
-            self.linhaTabuleiro = []
-            for c in range(0, coluna):
-                self.linhaTabuleiro.append(0)
-            self.matrizTabuleiro.append(self.linhaTabuleiro)
+        self.quant_barcos = 9
+        self.jogou = []
 
 
-        y = self.pos_y
-        for l in range(0, linha):
-            x = self.pos_x
-            for c in range(0, coluna):
-                if self.matrizTabuleiro[l][c] == 0:
-                    tela.blit(self.matrizTabuleiro[l][c], (x, y))
-                x += 50
-            y += 50
-
-    def desenhaTabuleiro(self, tela, linha=8, coluna=8):
+    def desenha_tabuleiro(self, tela, linha=8, coluna=8):
 
         self.matrizFundo = []
         for l in range(0, linha):
@@ -63,7 +37,7 @@ class Tabuleiro(pygame.sprite.Sprite):
                 x += 50
             y += 50
         pygame.display.update()
-        indiceAlfabetico, indiceNumerico = self.criaIndices()
+        indiceAlfabetico, indiceNumerico = self.cria_indices()
         if self.pos_x == 50:
             #loop para posicionamento dos índices alfabeticos (colunas) do lado 1
             y = 0
@@ -97,7 +71,7 @@ class Tabuleiro(pygame.sprite.Sprite):
 
 
 
-    def criaIndices(self):
+    def cria_indices(self):
         #loop para load, redimensionamento e adição de imagens dos índices alfabeticos (colunas) em lista
         indiceAlfabetico = []
         base = 65
@@ -136,12 +110,12 @@ class Tabuleiro(pygame.sprite.Sprite):
 
         return self.tuplas_sorteadas
 
-    def adicionaEmbarcacao(self, quantidade):
+    def adiciona_embarcacoes(self, quantidade):
         listaDeTuplas = self.sorteia(quantidade)
 
         for i in range(0, quantidade):
             try:
-                if quantidade > 4 :
+                if quantidade > 4:
                     imgSubmarino = pygame.image.load("./modulo/Repositorio-Imagens/submarino.png")
                     imgSubmarinoFormat = pygame.transform.scale(imgSubmarino, (48, 48))
 
@@ -191,39 +165,73 @@ class Tabuleiro(pygame.sprite.Sprite):
                 continue
 
 
+    def avalia_clique(self, tela=None):
+        mouse = pygame.mouse.get_pos()
+        self.pos_clicada = ()
+        self.pos_tela = ()
 
-
-
-    def exibe(self, tela):
         y = self.pos_y
         for l in range(0, 8):
             x = self.pos_x
             for c in range(0, 8):
-                tela.blit(self.matrizFundo[l][c], (x, y))
-                x += 50
-            y += 50
-
-
-    def avaliaCliqueTabuleiro(self, pos_x, pos_y, tela=None):
-        mouse = pygame.mouse.get_pos()
-        self.pos_clicada = ()
-        self.pos_tela = ()
-        y = pos_y
-        for l in range(0, 8):
-            x = pos_x
-            for c in range(0, 8):
                 if mouse[0] and self.matrizFundo[l][c].get_rect(topleft=(x, y)).collidepoint(mouse):
-                    if self.matrizFundo[l][c] == self.imgOceanoFormat:
-                        print("errou")
-                        erro = pygame.image.load("./modulo/Repositorio-Imagens/x.png")
-                        erroImg = pygame.transform.scale(erro, (48, 48))
-                        self.matrizFundo[l][c] = erroImg
-                        tela.blit(self.matrizFundo[l][c], (x, y))
-                    else:
-                        print("acertou")
-                        tela.blit(self.matrizFundo[l][c], (x, y))
-                    self.pos_clicada = (l, c)
-                    self.pos_tela = (x, y)
-                    return self.pos_clicada, self.pos_tela
+
+
+                    try:
+                        if self.matrizFundo[l][c] == self.imgOceanoFormat:
+                            erro = pygame.image.load("./modulo/Repositorio-Imagens/x.png")
+                            self.erroImg = pygame.transform.scale(erro, (48, 48))
+                            self.matrizFundo[l][c] = self.erroImg
+                            tela.blit(self.matrizFundo[l][c], (x, y))
+
+                        elif self.matrizFundo[l][c] == self.erroImg:
+                            pass
+
+                        else:
+                            tela.blit(self.matrizFundo[l][c], (x, y))
+                            self.quant_barcos-=1
+                    except AttributeError:
+                        continue
+
                 x += 50
             y += 50
+
+    def bot_joga(self, tela=None):
+
+        jogada = ()
+
+        lista = [0, 1, 2, 3, 4, 5, 6, 7]
+        pos_sorteada = []
+
+        for i in range(0, 2):
+            pos_sorteada.append(random.choice(range(0, len(lista))))
+        jogada = tuple(pos_sorteada)
+        if jogada not in self.tuplas_sorteadas:
+            self.jogou.append(jogada)
+        linha_jogada, coluna_jogada = jogada
+
+        y = self.pos_y
+        for l in range(0, 8):
+            x = self.pos_x
+            for c in range(0, 8):
+
+                if self.matrizFundo[linha_jogada][coluna_jogada] == self.imgOceanoFormat:
+                    erro = pygame.image.load("./modulo/Repositorio-Imagens/x.png")
+                    self.erroImg = pygame.transform.scale(erro, (48, 48))
+                    self.matrizFundo[linha_jogada][coluna_jogada] = self.erroImg
+                    tela.blit(self.matrizFundo[linha_jogada][coluna_jogada], (x, y))
+
+                elif self.matrizFundo[linha_jogada][coluna_jogada] == self.erroImg:
+                    pass
+
+                else:
+                    tela.blit(self.matrizFundo[l][c], (x, y))
+                    self.quant_barcos -= 1
+                x += 50
+            y += 50
+
+
+    def verifica_jogada(self):
+        if self.turno == 1:
+            self.avalia_clique()
+

@@ -1,5 +1,5 @@
 import pygame
-from modulo.TabuleiroTest import *
+from modulo.jogo import *
 
 tuplas_sorteadas = []
 for i in range(0, 10):
