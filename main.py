@@ -15,15 +15,15 @@ VEZ = 'JOGADOR1'
 
 def verifica_vencedor():
 
-    if jogador1.quant_barcos == 9:
+    if jogador1.quant_barcos == 3:
         Vencedor1 = pygame.image.load("./modulo/Repositorio-Imagens/Vencedor1.jpg")
-        Vencedor1Img = pygame.transform.scale(Vencedor1, (150, 150))
-        tela.blit(Vencedor1Img, (450, 200))
+        Vencedor1Img = pygame.transform.scale(Vencedor1, (160, 150))
+        tela.blit(Vencedor1Img, (450, 150))
 
-    elif jogador2.quant_barcos == 9:
+    elif jogador2.quant_barcos == 3:
         Vencedor2 = pygame.image.load("./modulo/Repositorio-Imagens/Vencedor2.jpg")
-        Vencedor2Img = pygame.transform.scale(Vencedor2, (150, 150))
-        tela.blit(Vencedor2Img, (450, 200))
+        Vencedor2Img = pygame.transform.scale(Vencedor2, (160, 150))
+        tela.blit(Vencedor2Img, (450, 150))
 
 
 continuar = True
