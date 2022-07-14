@@ -1,6 +1,4 @@
 from modulo.jogo import *
-import sys
-pygame.font.init()
 
 tela = pygame.display.set_mode((1060,500))
 pygame.display.set_caption("Batalha Naval")
@@ -18,10 +16,18 @@ VEZ = 'JOGADOR1'
 def verifica_vencedor():
 
     if jogador1.quant_barcos == 9:
-        print("jogador 1 venceu")
+        Vencedor1 = pygame.image.load("./modulo/Repositorio-Imagens/Vencedor1.jpg")
+        Vencedor1Img = pygame.transform.scale(Vencedor1, (150, 150))
+        print("JOGADOR 1 VENCEU")
+        tela.blit(Vencedor1Img, (450, 200))
+        pygame.time.wait(5000)
         return True
     elif jogador2.quant_barcos == 9:
-        print("jogador 2 venceu")
+        Vencedor2 = pygame.image.load("./modulo/Repositorio-Imagens/Vencedor2.jpg")
+        Vencedor2Img = pygame.transform.scale(Vencedor2, (150, 150))
+        print("JOGADOR 2 VENCEU")
+        tela.blit(Vencedor2Img, (450, 200))
+        pygame.time.wait(5000)
         return True
 
 
