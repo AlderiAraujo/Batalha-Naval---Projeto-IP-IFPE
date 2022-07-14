@@ -1,10 +1,12 @@
 from modulo.jogo import *
-
+import sys
+pygame.font.init()
 
 tela = pygame.display.set_mode((1060,500))
 pygame.display.set_caption("Batalha Naval")
 RED = (255, 0, 0)
 GREY = (50, 50, 50)
+WHITE = (255, 255, 255)
 tela.fill(GREY)
 
 jogador1 = Tabuleiro(tela, 610, 50)
@@ -14,11 +16,12 @@ VEZ = 'JOGADOR1'
 
 
 def verifica_vencedor():
-    if jogador1.quant_barcos == 0:
-        print("jogador 2 venceu")
-        return True
-    elif jogador2.quant_barcos == 0:
+
+    if jogador1.quant_barcos == 9:
         print("jogador 1 venceu")
+        return True
+    elif jogador2.quant_barcos == 9:
+        print("jogador 2 venceu")
         return True
 
 
